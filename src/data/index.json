@@ -1,0 +1,72 @@
+{
+  "skills": [
+    {
+      "id": "1",
+      "src": "./img/product-chain-1.png",
+      "title": "Front-End",
+      "description": "Proficient in crafting captivating user interfaces and intuitive experiences using React.js and JavaScript frameworks. With a keen eye for design and a deep understanding of user behavior, I bring concepts to life through elegant and responsive frontend solutions."
+    },
+    {
+      "id": "2",
+      "src": "./img/tag-1.png",
+      "title": "Back-End",
+      "description": "Skilled in building robust server-side architectures with Node.js, I excel in creating scalable and efficient backend systems. From handling data processing to managing server logic, I leverage Node.js to power the backbone of web applications, ensuring seamless functionality and performance."
+    },
+    {
+      "id": "3",
+      "src": "./img/feather-pen-2.png",
+      "title": "Data Structures & Algorithms",
+      "description": "Proficient in designing and implementing efficient algorithms and data structures to tackle complex computational problems. Through rigorous study and practical application, I have honed my skills in optimizing algorithms for performance and scalability, ensuring robust solutions that meet the demands of modern computing environments."
+    },
+    {
+      "id": "4",
+      "src": "./img/feather-pen-1.png",
+      "title": "Database Management",
+      "description": "Skilled in designing and managing relational and non-relational databases to efficiently store, retrieve, and manipulate data. From schema design to query optimization, I possess a deep understanding of database systems and architectures, enabling me to develop data-driven applications with precision and reliability"
+    }
+  ],
+  "portfolio": [
+    {
+      "id": "1",
+      "src": "./img/placeholder-image-1.png",
+      "title": "FullStack E-commerce application",
+      "description": "Crafted a robust FullStack E-commerce application using Node.js and React, seamlessly integrating Braintree for secure payment processing. From intuitive user interfaces to backend functionalities, every aspect is meticulously designed to deliver a seamless shopping experience, ensuring reliability, security, and scalability at every step of the customer journey.",
+      "link": "View Live",
+      "linkAdd" : "https://prateek-ecom.netlify.app/"
+    },
+    {
+      "id": "2",
+      "src": "./img/placeholder-image-2.png",
+      "title": "Realtime Code-Editor",
+      "description": "Engineered a cutting-edge Realtime Code-Editor application utilizing React and Node.js, empowered with real-time collaboration features. Leveraging Webhooks, the platform enables multiple users to collaboratively edit code, with changes instantly visible to all participants. Seamlessly merging the power of React on the frontend and Node.js on the backend, this innovative tool fosters efficient teamwork, allowing developers to code together in sync, regardless of geographical barriers.",
+      "link": "View Live",
+      "linkAdd" : "https://realtime-code-editor-jq4r.onrender.com/"
+    },
+    {
+      "id": "3",
+      "src": "./img/placeholder-image.png",
+      "title": "Easy Rentn",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspenmdisse varius eim in eros elementum tristique",
+      "link": "View In Github"
+    }
+   
+  ],
+  "testimonial": [
+    {
+      "id": "1",
+      "count": "5",
+      "src": "./img/icon_p.png",
+      "description": "Your project reflects a deep understanding of both frontend and backend technologies, demonstrating your proficiency in React, Node.js, and Braintree integration. The seamless user experience and real-time collaboration features showcase your commitment to delivering high-quality, innovative solutions. Keep up the impressive work!",
+      "author_name": "Priyanka", 
+      "author_designation": "Associate Professor"
+    },
+    {
+      "id": "2",
+      "count": "5",
+      "src": "./img/icon_s.png",
+      "description": "Your adeptness in React, Node.js, and collaborative tools is evident in the seamless functionality and real-time features of your projects. Your ability to work effectively within a team, fostering communication and synergy, highlights your valuable contribution to achieving project goals. Your dedication to both technical excellence and cohesive teamwork sets a commendable standard for success.",
+      "author_name": "Sujeet",
+      "author_designation": "Assistant Professor"
+    }
+  ]
+}
