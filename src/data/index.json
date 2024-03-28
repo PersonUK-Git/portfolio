@@ -44,10 +44,11 @@
     },
     {
       "id": "3",
-      "src": "./img/placeholder-image.png",
-      "title": "Easy Rentn",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspenmdisse varius eim in eros elementum tristique",
-      "link": "View In Github"
+      "src": "./img/placeholder-image-3.png",
+      "title": "Tube Replica",
+      "description": "Presenting a React-powered YouTube clone, seamlessly integrated with YouTube's API via RapidAPI. Experience the familiarity of YouTube's interface while exploring videos, playlists, and more, all within this intuitive and responsive application",
+      "link": "View Live",
+      "linkAdd" : "https://tubereplica.netlify.app/"
     }
    
   ],

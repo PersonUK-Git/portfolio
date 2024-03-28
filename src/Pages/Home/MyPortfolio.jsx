@@ -1,9 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link , useHistory} from "react-router-dom";
 import data from "../../data/index.json";
 
 import "../../App.css"
 
+
+
 export default function MyPortfolio() {
+  const handleExternalLinkClick = (url) => {
+    window.open(url, "_blank");
+  };
   return (
     <section className="portfolio--section" id="MyPortfolio">
       <div className="portfolio--container-box">
@@ -12,7 +17,9 @@ export default function MyPortfolio() {
           <h2 className="section--heading">My Portfolio</h2>
         </div>
         <div>
-          <button className="btn btn-github">
+          <button className="btn btn-github" onClick={() =>
+              handleExternalLinkClick("https://github.com/PersonUK-Git")
+            }>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"
@@ -29,12 +36,20 @@ export default function MyPortfolio() {
 
              
             </svg>
-            <Link to="https://github.com/PersonUK-Git" className="link">  Visit My GitHub </Link>
+            Visit My GitHub
           </button>
         </div>
       </div>
       <div className="portfolio--section--container">
         {data?.portfolio?.map((item, index) => (
+           <Link to="#" className="link"
+           key={index}
+           onClick={(e) => {
+             
+               handleExternalLinkClick(item.linkAdd);
+             
+           }}
+           > 
           <div key={index} className="portfolio--section--card">
             <div className="portfolio--section--img">
               <img src={item.src} alt="Placeholder" />
@@ -44,7 +59,7 @@ export default function MyPortfolio() {
                 <h3 className="portfolio--section--title">{item.title}</h3>
                 <p className="text-md">{item.description}</p>
               </div>
-              <Link to={item.linkAdd} className="link">   
+               
               <p className="text-sm portfolio--link">
                 {item.link}
                 
@@ -64,9 +79,10 @@ export default function MyPortfolio() {
                   />
                 </svg>
               </p>
-              </Link>
+              
             </div>
           </div>
+          </Link>
         ))}
       </div>
     </section>
