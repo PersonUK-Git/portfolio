@@ -25,6 +25,12 @@ p {
   --black: #000000;
   --white: #ffffff;
 }
+
+.btn-container {
+  display: flex;
+  gap: 20px; /* Adjust the gap between buttons as needed */
+}
+
 .btn {
   font-family: "Roboto";
   display: inline-block;
@@ -237,6 +243,7 @@ h2 {
 /* Hero Section Style Ends */
 
 /* Skills Section Style */
+
 .skills--section {
   display: flex;
   padding: 149.33px 85.33px;
@@ -268,6 +275,9 @@ h2 {
   border-radius: 10.6px;
   background: var(--bg-shade);
   min-height: 250px;
+
+
+  
 }
 .skills--section--card:hover {
   border-bottom: 4px solid var(--primary);
@@ -305,7 +315,12 @@ h2 {
   font-weight: 400;
   line-height: 32px;
 }
-/* Skills Style Ends */
+
+
+
+
+
+/* Additional styling for front and back faces if needed */
 
 /* About Us */
 .about--section {
@@ -751,3 +766,5 @@ input[type="checkbox"] {
   color: black; /* Change the color to whatever you prefer */
   text-decoration: none; /* Remove the underline */
 }
+
+

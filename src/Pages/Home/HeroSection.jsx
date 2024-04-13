@@ -1,6 +1,31 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import "../../App.css"
 export default function HeroSection() {
+
+
+
+  const handleExternalLinkClick = (url) => {
+    window.open(url, "_blank");
+  };
+
+
+
+  const [displayResume, setDisplayResume] = useState(false);
+
+  const openResumeInNewWindow = (resumePath) => {
+    const newWindow = window.open(resumePath, "_blank", "fullscreen=yes");
+    if (newWindow) {
+      newWindow.focus();
+
+      const anchor = document.createElement('a');
+    anchor.href = resumePath;
+    anchor.download = 'Prateek_resume.pdf';
+    anchor.click();
+    } else {
+      alert("Your browser is blocking pop-ups. Please allow pop-ups and try again.");
+    }
+  };
   return (
     <section id="heroSection" className="hero--section">
       <div className="hero--section--content--box">
@@ -18,11 +43,29 @@ export default function HeroSection() {
             <br /> Committed to continuous learning and embracing challenges in the ever-evolving tech landscape.
           </p>
         </div>
-        <button className="btn btn-primary">
-          <Link className="link" to="https://www.linkedin.com/in/prateek-sharma-1b4882264/">
+
+        <div className="btn-container">
+        <button className="btn btn-primary" onClick={() => {
+          handleExternalLinkClick("https://www.linkedin.com/in/prateek-sharma-1b4882264/")
+        }}>
+          
           Get In Touch
-          </Link>
+          
         </button>
+
+
+            <button className="btn btn-primary" onClick={() => {
+      openResumeInNewWindow("./assets/Prateek_resume.pdf");
+    }}>
+      See Resume
+    </button>
+
+        {displayResume && (
+        <div className="resume-container">
+          <embed src="./img/Prateek_resume.pdf" type="application/pdf" width="100%" height="600px" />
+        </div>
+      )}
+        </div>
       </div>
       <div className="hero--section--img">
         <img src="./img/hero_img.png" alt="Hero Section" />
