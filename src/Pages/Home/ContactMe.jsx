@@ -42,6 +42,14 @@ export default function ContactMe() {
       const result = await response.json();
     //  alert('Message sent successfully');
     toast.success("Message sent successfully")
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      phoneNumber: '',
+      topic: '',
+      message: '',
+    });
     } catch (error) {
       console.error('There was a problem with the fetch operation:', error);
      // alert('There was an error sending your message. Please try again later.');
