@@ -40,10 +40,10 @@ export default function ContactMe() {
       }
 
       const result = await response.json();
-      alert('Message sent successfully');
+    //  alert('Message sent successfully');
     } catch (error) {
       console.error('There was a problem with the fetch operation:', error);
-      alert('There was an error sending your message. Please try again later.');
+     // alert('There was an error sending your message. Please try again later.');
     }
   };
 
