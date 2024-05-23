@@ -27,7 +27,7 @@ export default function ContactMe() {
 
     try {
       // Send form data to the server or email service
-      const response = await fetch('https://prateeks-portfolio.netlify.app/api/contact', {
+      const response = await fetch('https://portfolio-camq.onrender.com/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
