@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { toast } from 'react-toastify'
 export default function ContactMe() {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -41,9 +41,11 @@ export default function ContactMe() {
 
       const result = await response.json();
     //  alert('Message sent successfully');
+    toast.success("Message sent successfully")
     } catch (error) {
       console.error('There was a problem with the fetch operation:', error);
      // alert('There was an error sending your message. Please try again later.');
+     toast.error("There was an error sending your message. Please try again later.")
     }
   };
 
