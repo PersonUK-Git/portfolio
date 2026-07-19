@@ -3,69 +3,102 @@
     {
       "id": "1",
       "src": "./img/product-chain-1.png",
-      "title": "Front-End",
-      "description": "Proficient in crafting captivating user interfaces and intuitive experiences using React.js and JavaScript frameworks. With a keen eye for design and a deep understanding of user behavior, I bring concepts to life through elegant and responsive frontend solutions."
+      "title": "Front-End & Mobile",
+      "description": "Crafting cross-platform apps and web experiences with React, React Native (Expo), Flutter, Next.js, and Tailwind CSS. Specialized in native bridges (Swift/Kotlin), Framer Motion, and Three.js.",
+      "techStack": ["React", "React Native", "Flutter", "Next.js", "Three.js", "Framer Motion", "Tailwind CSS"],
+      "progress": 92
     },
     {
       "id": "2",
       "src": "./img/tag-1.png",
-      "title": "Back-End",
-      "description": "Skilled in building robust server-side architectures with Node.js, I excel in creating scalable and efficient backend systems. From handling data processing to managing server logic, I leverage Node.js to power the backbone of web applications, ensuring seamless functionality and performance."
+      "title": "Back-End & APIs",
+      "description": "Designing robust server-side architectures with Node.js, Express, and Django. Skilled in REST APIs, WebSockets, JWT, SSO (OAuth2), and centralized identity systems.",
+      "techStack": ["Node.js", "Express", "Django", "REST APIs", "JWT", "OAuth2", "WebSockets"],
+      "progress": 88
     },
     {
       "id": "3",
-      "src": "./img/feather-pen-2.png",
-      "title": "Data Structures & Algorithms",
-      "description": "Proficient in designing and implementing efficient algorithms and data structures to tackle complex computational problems. Through rigorous study and practical application, I have honed my skills in optimizing algorithms for performance and scalability, ensuring robust solutions that meet the demands of modern computing environments."
+      "src": "./img/feather-pen-1.png",
+      "title": "Databases & DevOps",
+      "description": "Designing scalable schemas and query optimizations with MongoDB, PostgreSQL, and Firebase. Deploying containerized services via Docker, Nginx, and GitHub Actions CI/CD on Oracle Cloud.",
+      "techStack": ["MongoDB", "PostgreSQL", "Firebase", "Docker", "GitHub Actions", "Nginx", "Oracle Cloud"],
+      "progress": 85
     },
     {
       "id": "4",
-      "src": "./img/feather-pen-1.png",
-      "title": "Database Management",
-      "description": "Skilled in designing and managing relational and non-relational databases to efficiently store, retrieve, and manipulate data. From schema design to query optimization, I possess a deep understanding of database systems and architectures, enabling me to develop data-driven applications with precision and reliability"
+      "src": "./img/feather-pen-2.png",
+      "title": "Integrations & Languages",
+      "description": "Integrating Stripe, Braintree, QuickBooks, Gemini AI, FCM, Apple HealthKit, and Android Health Connect. Strong programming foundations in C/C++, JavaScript, TypeScript, Dart, Swift, and Kotlin.",
+      "techStack": ["TypeScript", "Swift", "Kotlin", "Dart", "C/C++", "Gemini AI", "HealthKit", "Braintree"],
+      "progress": 90
     }
   ],
   "portfolio": [
     {
       "id": "1",
-      "src": "./img/placeholder-image-1.png",
-      "title": "FullStack E-commerce application",
-      "description": "Crafted a robust FullStack E-commerce application using Node.js and React, seamlessly integrating Braintree for secure payment processing. From intuitive user interfaces to backend functionalities, every aspect is meticulously designed to deliver a seamless shopping experience, ensuring reliability, security, and scalability at every step of the customer journey.",
-      "link": "View Live",
-      "linkAdd" : "https://prateek-ecom.netlify.app/"
+      "src": "https://play-lh.googleusercontent.com/sewftgpO1eR7rtHdhdMfFEX00ZK1uzCYP2fVnwSuFORbfvJ9xd7naS1vzPbzloXNLEBk2LDPlpKIpEOaJroyMg=w526-h296-rw",
+      "images": [
+        "https://play-lh.googleusercontent.com/sewftgpO1eR7rtHdhdMfFEX00ZK1uzCYP2fVnwSuFORbfvJ9xd7naS1vzPbzloXNLEBk2LDPlpKIpEOaJroyMg=w526-h296-rw",
+        "https://play-lh.googleusercontent.com/E528NUm1Pv3oMKqpX5vSC3z_VEO3r4eZH_-gkmUBpx_91ps1Xl3CrnufxLBJE6dlwqRm8t03eYq-lQlsVTph8A=w526-h296-rw",
+        "https://play-lh.googleusercontent.com/2X2FSfkJklOLhRC1JFR4IZigLHVGekqlakr_kJFOcK6n9uOdBXTEKv3tpjl-0Q3mEI5zzAK_tv5Yzh3x6mjG=w526-h296-rw",
+        "https://play-lh.googleusercontent.com/2X2FSfkJklOLhRC1JFR4IZigLHVGekqlakr_kJFOcK6n9uOdBXTEKv3tpjl-0Q3mEI5zzAK_tv5Yzh3x6mjG=w526-h296-rw"
+      ],
+      "title": "ClimbIRL — Gamified Productivity App",
+      "description": "Independently built and published a full-stack gamified task RPG on Play Store. Features XP, timezone-aware ranking, atomic achievements, rewarded AdMob economy, Gemini 2.5 Flash photo task verification, and automated Docker deployment to Oracle Cloud.",
+      "link": "Play Store",
+      "linkAdd": "https://play.google.com/store/apps/details?id=com.trackittoo.climbirl",
+      "tags": ["Flutter", "Node.js", "Gemini AI", "Docker", "Oracle Cloud", "FCM", "Three.js"]
     },
     {
       "id": "2",
-      "src": "./img/placeholder-image-2.png",
-      "title": "Realtime Code-Editor",
-      "description": "Engineered a cutting-edge Realtime Code-Editor application utilizing React and Node.js, empowered with real-time collaboration features. Leveraging Webhooks, the platform enables multiple users to collaboratively edit code, with changes instantly visible to all participants. Seamlessly merging the power of React on the frontend and Node.js on the backend, this innovative tool fosters efficient teamwork, allowing developers to code together in sync, regardless of geographical barriers.",
+      "src": "./img/placeholder-image-1.png",
+      "title": "Full Stack E-Commerce Platform",
+      "description": "A comprehensive e-commerce system featuring product catalogue search, cart management, secure user authentication, and Braintree payment gateway integration for end-to-end transactions.",
       "link": "View Live",
-      "linkAdd" : "https://realtime-code-editor-jq4r.onrender.com/"
+      "linkAdd": "https://prateek-ecom.netlify.app/",
+      "tags": ["React", "Node.js", "Express", "MongoDB", "Braintree", "Bootstrap"]
     },
     {
       "id": "3",
-      "src": "./img/placeholder-image-3.png",
-      "title": "Tube Replica",
-      "description": "Presenting a React-powered YouTube clone, seamlessly integrated with YouTube's API via RapidAPI. Experience the familiarity of YouTube's interface while exploring videos, playlists, and more, all within this intuitive and responsive application",
+      "src": "./img/placeholder-image-2.png",
+      "title": "Realtime Code Editor",
+      "description": "A collaborative realtime editor built to facilitate synced coding workflows. Uses WebSockets and Socket.io to allow multiple developers to co-author code seamlessly with zero lag.",
       "link": "View Live",
-      "linkAdd" : "https://tubereplica.netlify.app/"
+      "linkAdd": "https://realtime-code-editor-jq4r.onrender.com/",
+      "tags": ["React", "Node.js", "WebSockets", "Socket.io", "Express"]
     }
-   
+  ],
+  "experience": [
+    {
+      "id": "1",
+      "role": "Software Developer",
+      "company": "75way Technologies",
+      "location": "Mohali, Chandigarh, India",
+      "duration": "AUG 2025 - Present",
+      "points": [
+        "Architected a centralized SSO Client Hub integrating 3 client applications, eliminating duplicate authentication systems and reducing user onboarding friction with zero disruption to the active user base.",
+        "Redesigned authentication workflows across multiple web applications to integrate with a centralized identity provider, cutting per-app auth complexity.",
+        "Consolidated billing infrastructure for multiple products into a unified platform, streamlining subscription management and payment processing.",
+        "Engineered custom native bridge modules in Swift (iOS) and Kotlin (Android) to integrate proprietary smart-scale SDKs with a React Native (Expo) app, enabling real-time body composition tracking.",
+        "Integrated Apple Health (HealthKit) and Android Health Connect to sync biometric data, enabling comprehensive fitness progress dashboards."
+      ],
+      "tags": ["React Native", "Swift", "Kotlin", "Node.js", "PostgreSQL", "Docker", "GitHub Actions"]
+    }
   ],
   "testimonial": [
     {
       "id": "1",
       "count": "5",
       "src": "./img/icon_p.png",
-      "description": "Your project reflects a deep understanding of both frontend and backend technologies, demonstrating your proficiency in React, Node.js, and Braintree integration. The seamless user experience and real-time collaboration features showcase your commitment to delivering high-quality, innovative solutions. Keep up the impressive work!",
-      "author_name": "Priyanka", 
+      "description": "Your project reflects a deep understanding of both frontend and backend technologies, demonstrating your proficiency in React, Node.js, and Braintree integration. The seamless user experience and real-time collaboration features showcase your commitment to delivering high-quality, innovative solutions.",
+      "author_name": "Priyanka",
       "author_designation": "Associate Professor"
     },
     {
       "id": "2",
       "count": "5",
       "src": "./img/icon_s.png",
-      "description": "Your adeptness in React, Node.js, and collaborative tools is evident in the seamless functionality and real-time features of your projects. Your ability to work effectively within a team, fostering communication and synergy, highlights your valuable contribution to achieving project goals. Your dedication to both technical excellence and cohesive teamwork sets a commendable standard for success.",
+      "description": "Your adeptness in React, Node.js, and collaborative tools is evident in the seamless functionality and real-time features of your projects. Your ability to work effectively within a team, fostering communication and synergy, highlights your valuable contribution to achieving project goals.",
       "author_name": "Sujeet",
       "author_designation": "Assistant Professor"
     }
