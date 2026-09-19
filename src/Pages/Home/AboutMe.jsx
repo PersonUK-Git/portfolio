@@ -6,7 +6,10 @@ export default function AboutMe() {
 
   return (
     <section id="AboutMe" className="section">
-      <div className="section--header reveal">
+      <div className="chapter" aria-hidden="true">
+        <span className="chapter-word">About</span>
+      </div>
+      <div className="section--header">
         <p className="eyebrow">01 · About</p>
         <h2 className="section--title">
           A developer who ships <span className="gradient-text">end to end</span>

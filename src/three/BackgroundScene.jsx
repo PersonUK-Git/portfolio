@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, MeshDistortMaterial, Sparkles, Stars } from "@react-three/drei";
 import * as THREE from "three";
+import { motion } from "../motion/smoothScroll";
 
 const reducedMotion =
   typeof window !== "undefined" &&
@@ -108,19 +109,54 @@ function FloatingShapes({ count, isMobile }) {
   ));
 }
 
-function CameraRig() {
-  useFrame((state) => {
+// Camera "shots" keyed to page progress (0 = top, 1 = bottom). Between keys
+// the camera eases along, so scrolling plays like a sequence of cuts.
+const SHOTS = [
+  { p: 0.0, x: 0, z: 7, roll: 0 }, // hero: close on the core
+  { p: 0.12, x: -1.6, z: 9.5, roll: 0.07 }, // about: pull back, bank left
+  { p: 0.26, x: 1.4, z: 6.5, roll: -0.05 }, // experience: push in from the right
+  { p: 0.42, x: 0, z: 11, roll: 0.04 }, // skills: wide
+  { p: 0.62, x: -1.2, z: 8, roll: -0.06 }, // projects: dolly across
+  { p: 0.85, x: 1, z: 10, roll: 0.03 }, // feedback
+  { p: 1.0, x: 0, z: 13, roll: 0 }, // contact: final wide shot
+];
+const smooth = (t) => t * t * (3 - 2 * t);
+
+function shotAt(p) {
+  let i = 0;
+  while (i < SHOTS.length - 2 && p > SHOTS[i + 1].p) i++;
+  const a = SHOTS[i];
+  const b = SHOTS[i + 1];
+  const t = smooth(THREE.MathUtils.clamp((p - a.p) / (b.p - a.p), 0, 1));
+  return { x: a.x + (b.x - a.x) * t, z: a.z + (b.z - a.z) * t, roll: a.roll + (b.roll - a.roll) * t };
+}
+
+function CameraRig({ starsRef }) {
+  const roll = useRef(0);
+  useFrame((state, delta) => {
     const cam = state.camera;
+    const shot = shotAt(motion.progress);
     // One viewport of scroll moves the camera ~3.5 units down through the scene.
     const targetY = -input.scroll * 3.5;
-    cam.position.x = THREE.MathUtils.lerp(cam.position.x, input.x * 0.6, 0.04);
+    cam.position.x = THREE.MathUtils.lerp(cam.position.x, shot.x + input.x * 0.6, 0.04);
     cam.position.y = THREE.MathUtils.lerp(cam.position.y, targetY + input.y * 0.4, 0.08);
+    cam.position.z = THREE.MathUtils.lerp(cam.position.z, shot.z, 0.05);
     cam.lookAt(cam.position.x * 0.3, cam.position.y, 0);
+    roll.current = THREE.MathUtils.lerp(roll.current, shot.roll, 0.05);
+    cam.rotateZ(roll.current);
+
+    // Warp speed: fast scrolling widens the lens and spins the starfield.
+    const speed = Math.min(Math.abs(motion.velocity), 60);
+    cam.fov = THREE.MathUtils.lerp(cam.fov, 50 + speed * 0.4, 0.1);
+    cam.updateProjectionMatrix();
+    if (starsRef.current) starsRef.current.rotation.z += delta * 0.02 + motion.velocity * 0.0006;
+    motion.velocity *= 0.92; // decay so the kick settles once scrolling stops
   });
   return null;
 }
 
 export default function BackgroundScene() {
+  const starsRef = useRef();
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
   useEffect(() => {
@@ -154,10 +190,12 @@ export default function BackgroundScene() {
         <pointLight position={[5, 4, 5]} intensity={60} color="#a78bfa" />
         <pointLight position={[-5, -3, 3]} intensity={40} color="#22d3ee" />
         <directionalLight position={[0, 5, 5]} intensity={0.8} />
-        <Stars radius={60} depth={40} count={isMobile ? 1500 : 3500} factor={3} fade speed={0.6} />
+        <group ref={starsRef}>
+          <Stars radius={60} depth={40} count={isMobile ? 1500 : 3500} factor={3} fade speed={0.6} />
+        </group>
         <Core isMobile={isMobile} />
         <FloatingShapes count={isMobile ? 10 : 16} isMobile={isMobile} />
-        <CameraRig />
+        <CameraRig starsRef={starsRef} />
       </Canvas>
     </div>
   );

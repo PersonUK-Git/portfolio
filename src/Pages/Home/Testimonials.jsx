@@ -4,7 +4,10 @@ import { StarIcon } from "../../components/Icons";
 export default function Testimonial() {
   return (
     <section id="testimonial" className="section">
-      <div className="section--header reveal">
+      <div className="chapter" aria-hidden="true">
+        <span className="chapter-word">Feedback</span>
+      </div>
+      <div className="section--header">
         <p className="eyebrow">05 · Feedback</p>
         <h2 className="section--title">
           Kind words from <span className="gradient-text">faculty</span>

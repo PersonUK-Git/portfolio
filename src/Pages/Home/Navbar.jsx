@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-scroll";
+import ScrollLink from "../../components/ScrollLink";
 
 const LINKS = [
   { to: "heroSection", label: "Home" },
@@ -14,6 +14,7 @@ function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [active, setActive] = useState("heroSection");
 
   useEffect(() => {
     const onScroll = () => {
@@ -22,12 +23,23 @@ function Navbar() {
       setProgress(max > 0 ? window.scrollY / max : 0);
     };
     const onResize = () => window.innerWidth > 960 && setOpen(false);
+
+    // Highlight whichever section crosses the middle of the viewport.
+    const spy = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    [...LINKS.map((l) => l.to), "Contact"].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) spy.observe(el);
+    });
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
+      spy.disconnect();
     };
   }, []);
 
@@ -36,10 +48,10 @@ function Navbar() {
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""} ${open ? "open" : ""}`}>
       <div className="navbar--progress" style={{ transform: `scaleX(${progress})` }} />
-      <Link to="heroSection" smooth duration={600} className="navbar--brand" onClick={close}>
+      <ScrollLink to="heroSection" className="navbar--brand" onClick={close}>
         <span className="navbar--logo">P</span>
         Prateek<span className="accent">.dev</span>
-      </Link>
+      </ScrollLink>
 
       <button
         className={`nav__hamburger ${open ? "active" : ""}`}
@@ -55,30 +67,25 @@ function Navbar() {
       <ul className="navbar--items">
         {LINKS.map((l) => (
           <li key={l.to}>
-            <Link
+            <ScrollLink
               to={l.to}
-              spy
-              smooth
-              offset={-80}
-              duration={600}
-              activeClass="active"
-              className="navbar--link"
+              className={`navbar--link ${active === l.to ? "active" : ""}`}
               onClick={close}
             >
               {l.label}
-            </Link>
+            </ScrollLink>
           </li>
         ))}
         <li className="navbar--cta-mobile">
-          <Link to="Contact" smooth offset={-80} duration={600} className="btn btn-primary" onClick={close}>
+          <ScrollLink to="Contact" className="btn btn-primary" onClick={close}>
             Let's talk
-          </Link>
+          </ScrollLink>
         </li>
       </ul>
 
-      <Link to="Contact" smooth offset={-80} duration={600} className="btn btn-primary navbar--cta">
+      <ScrollLink to="Contact" className="btn btn-primary navbar--cta">
         Let's talk
-      </Link>
+      </ScrollLink>
     </nav>
   );
 }

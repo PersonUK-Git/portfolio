@@ -3,7 +3,10 @@ import data from "../../data/index.json";
 export default function Experience() {
   return (
     <section id="experience" className="section">
-      <div className="section--header reveal">
+      <div className="chapter" aria-hidden="true">
+        <span className="chapter-word">Experience</span>
+      </div>
+      <div className="section--header">
         <p className="eyebrow">02 · Experience</p>
         <h2 className="section--title">
           Where I've been <span className="gradient-text">building</span>
@@ -11,6 +14,7 @@ export default function Experience() {
       </div>
 
       <div className="timeline">
+        <span className="timeline--line" />
         {data.experience.map((exp) => (
           <article key={exp.id} className="timeline--item reveal">
             <span className="timeline--dot" />

@@ -1,6 +1,8 @@
-import { lazy, Suspense, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import data from "../../data/index.json";
 import { useInView } from "../../hooks/useInView";
+import { scrollToId } from "../../motion/smoothScroll";
 import { ArrowUpRight, GithubIcon, LockIcon } from "../../components/Icons";
 
 const ProjectGalaxy = lazy(() => import("../../three/ProjectGalaxy"));
@@ -138,14 +140,16 @@ export default function MyPortfolio() {
   const rest = projects.filter((p) => !p.featured && (filter === "All" || p.categories.includes(filter)));
   const showFeatured = filter === "All" || featured.categories.includes(filter);
 
+  // Filtering changes the page height, so scroll-driven animations re-measure.
+  useEffect(() => {
+    ScrollTrigger.refresh();
+  }, [filter]);
+
   const selectProject = (id) => {
     setFilter("All");
     // Wait a frame so the card exists if a filter was hiding it.
     requestAnimationFrame(() => {
-      const el = document.getElementById(`project-${id}`);
-      if (!el) return;
-      const top = el.getBoundingClientRect().top + window.scrollY - 100;
-      window.scrollTo({ top, behavior: "smooth" });
+      scrollToId(`project-${id}`, -100);
       setFlashId(id);
       clearTimeout(flashTimer.current);
       flashTimer.current = setTimeout(() => setFlashId(null), 1800);
@@ -154,17 +158,20 @@ export default function MyPortfolio() {
 
   return (
     <section id="MyPortfolio" className="section">
-      <div className="section--header reveal">
+      <div className="chapter" aria-hidden="true">
+        <span className="chapter-word">Projects</span>
+      </div>
+      <div className="section--header">
         <p className="eyebrow">04 · Projects</p>
         <h2 className="section--title">
           The <span className="gradient-text">project galaxy</span>
         </h2>
-        <p className="section--lead">
+        <p className="section--lead reveal">
           Every planet is something I've built. Click one to fly to it, or scroll through them all below.
         </p>
       </div>
 
-      <div className="galaxy glass reveal" ref={galaxyRef}>
+      <div className="galaxy glass" ref={galaxyRef}>
         <Suspense fallback={<div className="canvas-fallback" />}>
           <ProjectGalaxy projects={projects} onSelect={selectProject} active={galaxyInView} />
         </Suspense>

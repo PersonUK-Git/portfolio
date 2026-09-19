@@ -38,7 +38,10 @@ export default function ContactMe() {
 
   return (
     <section id="Contact" className="section">
-      <div className="contact glass reveal">
+      <div className="chapter" aria-hidden="true">
+        <span className="chapter-word">Contact</span>
+      </div>
+      <div className="contact glass">
         <div className="contact--intro">
           <p className="eyebrow">06 · Contact</p>
           <h2 className="section--title">

@@ -10,18 +10,21 @@ export default function MySkills() {
 
   return (
     <section id="mySkills" className="section">
-      <div className="section--header reveal">
+      <div className="chapter" aria-hidden="true">
+        <span className="chapter-word">Skills</span>
+      </div>
+      <div className="section--header">
         <p className="eyebrow">03 · Skills</p>
         <h2 className="section--title">
           My <span className="gradient-text">tech universe</span>
         </h2>
-        <p className="section--lead">
+        <p className="section--lead reveal">
           Spin the globe, then hover or tap a category to light up its tools.
         </p>
       </div>
 
       <div className="skills--layout">
-        <div className="skills--globe reveal" ref={globeRef}>
+        <div className="skills--globe" ref={globeRef}>
           <Suspense fallback={<div className="canvas-fallback" />}>
             <SkillsGlobe skills={data.skills} activeGroup={activeGroup} active={globeInView} />
           </Suspense>

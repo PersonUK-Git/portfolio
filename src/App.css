@@ -30,8 +30,20 @@
 }
 
 html {
-  scroll-behavior: smooth;
   background: var(--bg);
+}
+
+/* Lenis smooth scrolling */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped,
+.intro-lock {
+  overflow: hidden;
 }
 
 body {
@@ -115,15 +127,7 @@ textarea {
   font-size: 13px;
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(36px);
-  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
-}
-.reveal.revealed {
-  opacity: 1;
-  transform: none;
-}
+/* .reveal elements are animated in by GSAP (src/motion/useCinematic.js). */
 
 .tags {
   display: flex;
@@ -392,7 +396,6 @@ textarea {
   font-size: 14px;
   font-weight: 500;
   margin-bottom: 24px;
-  animation: fadeUp 0.8s var(--ease) both;
 }
 .pulse-dot {
   width: 8px;
@@ -422,7 +425,6 @@ textarea {
   line-height: 1.02;
   font-weight: 700;
   letter-spacing: -0.03em;
-  animation: fadeUp 0.9s 0.1s var(--ease) both;
 }
 .hero--typed {
   font-family: var(--font-mono);
@@ -430,7 +432,6 @@ textarea {
   color: var(--cyan);
   margin: 18px 0 20px;
   min-height: 1.6em;
-  animation: fadeUp 0.9s 0.2s var(--ease) both;
 }
 .hero--typed::before {
   content: "> ";
@@ -454,20 +455,17 @@ textarea {
   font-size: clamp(16px, 1.5vw, 18px);
   color: var(--muted);
   max-width: 540px;
-  animation: fadeUp 0.9s 0.3s var(--ease) both;
 }
 .hero--actions {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 32px;
-  animation: fadeUp 0.9s 0.4s var(--ease) both;
 }
 .hero--socials {
   display: flex;
   gap: 12px;
   margin-top: 28px;
-  animation: fadeUp 0.9s 0.5s var(--ease) both;
 }
 .hero--socials a,
 .footer--socials a {
@@ -492,7 +490,6 @@ textarea {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 180px));
   gap: 14px;
-  animation: fadeUp 0.9s 0.6s var(--ease) both;
 }
 .hero--stat {
   padding: 18px 20px;
@@ -549,6 +546,7 @@ textarea {
 
 /* ============ Sections ============ */
 .section {
+  position: relative;
   padding: 110px clamp(16px, 5vw, 64px);
   max-width: 1280px;
   margin: 0 auto;
@@ -705,14 +703,15 @@ textarea {
   position: relative;
   padding-left: 36px;
 }
-.timeline::before {
-  content: "";
+.timeline--line {
   position: absolute;
   left: 9px;
   top: 8px;
   bottom: 8px;
   width: 2px;
   background: linear-gradient(var(--violet), var(--cyan), transparent);
+  transform-origin: top;
+  box-shadow: 0 0 12px var(--violet);
 }
 .timeline--item {
   position: relative;
@@ -976,8 +975,10 @@ textarea {
   width: 46%;
   border-radius: 18px;
   box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.08);
-  transform: translate(-50%, -50%) translateX(calc((var(--i) - 1.5) * 42%)) rotateY(calc((var(--i) - 1.5) * -14deg))
-    translateZ(calc(-1 * max(var(--i) - 1.5, 1.5 - var(--i)) * 90px));
+  --offset: calc(var(--i) - 1.5);
+  transform: translate(-50%, -50%) translateX(calc(var(--offset) * (8% + var(--spread, 1) * 40%)))
+    rotateY(calc(var(--offset) * var(--spread, 1) * -14deg))
+    translateZ(calc(-1 * max(var(--offset), -1 * var(--offset)) * 90px * var(--spread, 1)));
   transition: transform 0.7s var(--ease);
   z-index: 1;
 }
@@ -991,7 +992,7 @@ textarea {
   z-index: 3;
 }
 .featured:hover .featured--phone {
-  transform: translate(-50%, -50%) translateX(calc((var(--i) - 1.5) * 58%)) rotateY(calc((var(--i) - 1.5) * -8deg))
+  transform: translate(-50%, -50%) translateX(calc(var(--offset) * 58%)) rotateY(calc(var(--offset) * -8deg))
     translateZ(0);
 }
 .featured--phone:hover {
@@ -1297,6 +1298,128 @@ textarea {
   gap: 10px;
 }
 
+/* ============ Cinematic layers ============ */
+.chapter {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+.chapter-word {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(90px, 17vw, 260px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(167, 139, 250, 0.13);
+  user-select: none;
+}
+
+.grain {
+  position: fixed;
+  inset: -50%;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 0.8s steps(4) infinite;
+}
+@keyframes grain {
+  25% {
+    transform: translate(-3%, 2%);
+  }
+  50% {
+    transform: translate(2%, -3%);
+  }
+  75% {
+    transform: translate(-2%, -2%);
+  }
+}
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+}
+.intro--bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50.5%;
+  background: #030208;
+}
+.intro--bar-top {
+  top: 0;
+  border-bottom: 1px solid rgba(167, 139, 250, 0.25);
+}
+.intro--bar-bottom {
+  bottom: 0;
+  border-top: 1px solid rgba(167, 139, 250, 0.25);
+}
+.intro--content {
+  position: relative;
+  text-align: center;
+  padding: 0 16px;
+}
+.intro--kicker {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.intro--name {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 9vw, 120px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: #f5f3ff;
+  text-shadow: 0 0 40px rgba(139, 92, 246, 0.7), 0 0 90px rgba(34, 211, 238, 0.25);
+}
+.intro--name span {
+  display: inline-block;
+}
+.intro--rule {
+  height: 1px;
+  width: min(420px, 70vw);
+  margin: 24px auto 18px;
+  background: linear-gradient(90deg, transparent, var(--violet-light), transparent);
+}
+.intro--tag {
+  font-family: var(--font-mono);
+  font-size: clamp(12px, 1.6vw, 15px);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+.intro--skip {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.intro--skip:hover {
+  color: #fff;
+  border-color: var(--violet);
+}
+
 /* ============ 404 ============ */
 .not-found {
   min-height: 100vh;
@@ -1436,7 +1559,7 @@ textarea {
   .timeline--dot {
     left: -26px;
   }
-  .timeline::before {
+  .timeline--line {
     left: 9px;
   }
   .code-card pre {

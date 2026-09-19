@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-scroll";
 import data from "../../data/index.json";
+import ScrollLink from "../../components/ScrollLink";
 import { ArrowDown, FileIcon, GithubIcon, LinkedinIcon, MailIcon } from "../../components/Icons";
 
 // Types each role out, pauses, deletes it, then moves on to the next one.
@@ -56,9 +56,9 @@ export default function HeroSection() {
         </p>
 
         <div className="hero--actions">
-          <Link to="MyPortfolio" smooth offset={-80} duration={700} className="btn btn-primary">
+          <ScrollLink to="MyPortfolio" className="btn btn-primary">
             Explore my work
-          </Link>
+          </ScrollLink>
           <a href={profile.resume} target="_blank" rel="noreferrer" className="btn btn-ghost">
             <FileIcon /> Resume
           </a>
@@ -86,12 +86,12 @@ export default function HeroSection() {
         ))}
       </div>
 
-      <Link to="AboutMe" smooth offset={-80} duration={700} className="scroll-indicator" aria-label="Scroll down">
+      <ScrollLink to="AboutMe" className="scroll-indicator" aria-label="Scroll down">
         <span className="mouse">
           <span className="wheel" />
         </span>
         <ArrowDown size={16} />
-      </Link>
+      </ScrollLink>
     </section>
   );
 }
