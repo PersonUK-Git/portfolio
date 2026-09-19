@@ -1,176 +1,96 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-scroll";
-import "../../App.css";
+import data from "../../data/index.json";
+import { ArrowDown, FileIcon, GithubIcon, LinkedinIcon, MailIcon } from "../../components/Icons";
 
-export default function HeroSection() {
-  const [typedText, setTypedText] = useState("");
-  const fullText = "Full Stack Developer";
+// Types each role out, pauses, deletes it, then moves on to the next one.
+function useTypewriter(words) {
+  const [text, setText] = useState("");
+  const [index, setIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      setTypedText(fullText.slice(0, index + 1));
-      index++;
-      if (index >= fullText.length) {
-        clearInterval(timer);
-      }
-    }, 80);
-    return () => clearInterval(timer);
-  }, []);
+    const word = words[index % words.length];
+    let delay = deleting ? 40 : 85;
+    if (!deleting && text === word) delay = 1600;
+    if (deleting && text === "") delay = 300;
 
-  const handleExternalLinkClick = (url) => {
-    window.open(url, "_blank");
-  };
+    const timer = setTimeout(() => {
+      if (!deleting && text === word) setDeleting(true);
+      else if (deleting && text === "") {
+        setDeleting(false);
+        setIndex((i) => i + 1);
+      } else setText(word.slice(0, text.length + (deleting ? -1 : 1)));
+    }, delay);
+    return () => clearTimeout(timer);
+  }, [text, deleting, index, words]);
 
-  const openResumeInNewWindow = (resumePath) => {
-    const newWindow = window.open(resumePath, "_blank", "fullscreen=yes");
-    if (newWindow) {
-      newWindow.focus();
-      const anchor = document.createElement("a");
-      anchor.href = resumePath;
-      anchor.download = "Prateek_resume.pdf";
-      anchor.click();
-    } else {
-      alert(
-        "Your browser is blocking pop-ups. Please allow pop-ups and try again."
-      );
-    }
-  };
+  return text;
+}
+
+export default function HeroSection() {
+  const { profile, stats } = data;
+  const typed = useTypewriter(profile.roles);
 
   return (
-    <section id="heroSection" className="hero--section">
-      {/* Floating decorative shapes */}
-      <div className="hero--floating-shape"></div>
-      <div className="hero--floating-shape"></div>
-      <div className="hero--floating-shape"></div>
+    <section id="heroSection" className="hero">
+      <div className="hero--content">
+        <p className="hero--badge">
+          <span className="pulse-dot" />
+          Software Developer @ {profile.company}
+        </p>
 
-      <div className="hero--section--content--box">
-        <div className="hero--section--content">
-          <p className="section--title">Hey, I'm Prateek</p>
-          <h1 className="hero--section--title">
-            <span className="hero--section-title--color">
-              {typedText}
-            </span>
-            <span
-              style={{
-                borderRight: "3px solid var(--primary)",
-                animation: "blink 1s step-end infinite",
-                marginLeft: "2px",
-              }}
-            >
-              &nbsp;
-            </span>
-            <br />
-            <span style={{ color: "var(--heading-color)", fontSize: "0.6em", fontWeight: 600 }}>
-              CSE Student & Tech Enthusiast
-            </span>
-          </h1>
-          <p className="hero--section-description">
-            Passionate about leveraging cutting-edge technologies to create
-            innovative solutions. Currently honing skills in full-stack
-            development while pursuing a degree in Computer Science Engineering.
-          </p>
+        <h1 className="hero--title">
+          Hi, I'm <span className="gradient-text">Prateek Sharma</span>
+        </h1>
+        <p className="hero--typed" aria-label={profile.roles.join(", ")}>
+          <span aria-hidden="true">
+            {typed}
+            <span className="caret" />
+          </span>
+        </p>
+
+        <p className="hero--description">
+          I build cross-platform apps, SSO systems and native mobile bridges, and ship them with Docker and CI/CD. I
+          like making software feel alive, so this site is a small universe of its own.
+        </p>
+
+        <div className="hero--actions">
+          <Link to="MyPortfolio" smooth offset={-80} duration={700} className="btn btn-primary">
+            Explore my work
+          </Link>
+          <a href={profile.resume} target="_blank" rel="noreferrer" className="btn btn-ghost">
+            <FileIcon /> Resume
+          </a>
         </div>
 
-        {/* Stats */}
-        <div className="hero--stats">
-          <div className="hero--stat">
-            <span className="hero--stat--number">3+</span>
-            <span className="hero--stat--label">Projects Built</span>
-          </div>
-          <div className="hero--stat">
-            <span className="hero--stat--number">4+</span>
-            <span className="hero--stat--label">Tech Skills</span>
-          </div>
-          <div className="hero--stat">
-            <span className="hero--stat--number">2+</span>
-            <span className="hero--stat--label">Endorsements</span>
-          </div>
-        </div>
-
-        <div className="btn-container">
-          <button
-            className="btn btn-primary"
-            onClick={() => {
-              handleExternalLinkClick(
-                "https://www.linkedin.com/in/prateek-sharma-1b4882264/"
-              );
-            }}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              style={{ marginRight: 8 }}
-            >
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-              <polyline points="22,6 12,13 2,6" />
-            </svg>
-            Get In Touch
-          </button>
-
-          <button
-            className="btn btn-outline-primary"
-            style={{ display: "inline-flex" }}
-            onClick={() => {
-              openResumeInNewWindow("./assets/Prateek_resume.pdf");
-            }}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              style={{ marginRight: 8 }}
-            >
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-              <polyline points="14 2 14 8 20 8" />
-              <line x1="16" y1="13" x2="8" y2="13" />
-              <line x1="16" y1="17" x2="8" y2="17" />
-              <polyline points="10 9 9 9 8 9" />
-            </svg>
-            See Resume
-          </button>
+        <div className="hero--socials">
+          <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub">
+            <GithubIcon />
+          </a>
+          <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <LinkedinIcon />
+          </a>
+          <a href={`mailto:${profile.email}`} aria-label="Email">
+            <MailIcon />
+          </a>
         </div>
       </div>
 
-      <div className="hero--section--img">
-        <img src="./img/hero_img.png" alt="Prateek Sharma - Full Stack Developer" />
+      <div className="hero--stats">
+        {stats.map((s) => (
+          <div key={s.label} className="hero--stat glass">
+            <span className="hero--stat-value gradient-text">{s.value}</span>
+            <span className="hero--stat-label">{s.label}</span>
+          </div>
+        ))}
       </div>
 
-      {/* Scroll down indicator */}
-      <Link
-        to="mySkills"
-        smooth={true}
-        duration={500}
-        offset={-70}
-        className="scroll--indicator"
-      >
-        <span>Scroll</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="6 9 12 15 18 9" />
-        </svg>
+      <Link to="AboutMe" smooth offset={-80} duration={700} className="scroll-indicator" aria-label="Scroll down">
+        <span className="mouse">
+          <span className="wheel" />
+        </span>
+        <ArrowDown size={16} />
       </Link>
     </section>
   );

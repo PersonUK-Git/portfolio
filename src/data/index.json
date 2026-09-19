@@ -1,72 +1,29 @@
 {
-  "skills": [
-    {
-      "id": "1",
-      "src": "./img/product-chain-1.png",
-      "title": "Front-End & Mobile",
-      "description": "Crafting cross-platform apps and web experiences with React, React Native (Expo), Flutter, Next.js, and Tailwind CSS. Specialized in native bridges (Swift/Kotlin), Framer Motion, and Three.js.",
-      "techStack": ["React", "React Native", "Flutter", "Next.js", "Three.js", "Framer Motion", "Tailwind CSS"],
-      "progress": 92
-    },
-    {
-      "id": "2",
-      "src": "./img/tag-1.png",
-      "title": "Back-End & APIs",
-      "description": "Designing robust server-side architectures with Node.js, Express, and Django. Skilled in REST APIs, WebSockets, JWT, SSO (OAuth2), and centralized identity systems.",
-      "techStack": ["Node.js", "Express", "Django", "REST APIs", "JWT", "OAuth2", "WebSockets"],
-      "progress": 88
-    },
-    {
-      "id": "3",
-      "src": "./img/feather-pen-1.png",
-      "title": "Databases & DevOps",
-      "description": "Designing scalable schemas and query optimizations with MongoDB, PostgreSQL, and Firebase. Deploying containerized services via Docker, Nginx, and GitHub Actions CI/CD on Oracle Cloud.",
-      "techStack": ["MongoDB", "PostgreSQL", "Firebase", "Docker", "GitHub Actions", "Nginx", "Oracle Cloud"],
-      "progress": 85
-    },
-    {
-      "id": "4",
-      "src": "./img/feather-pen-2.png",
-      "title": "Integrations & Languages",
-      "description": "Integrating Stripe, Braintree, QuickBooks, Gemini AI, FCM, Apple HealthKit, and Android Health Connect. Strong programming foundations in C/C++, JavaScript, TypeScript, Dart, Swift, and Kotlin.",
-      "techStack": ["TypeScript", "Swift", "Kotlin", "Dart", "C/C++", "Gemini AI", "HealthKit", "Braintree"],
-      "progress": 90
-    }
+  "profile": {
+    "name": "Prateek Sharma",
+    "role": "Full Stack Developer",
+    "roles": ["Full Stack Developer", "Mobile App Engineer", "React Native & Flutter Dev", "Three.js Tinkerer"],
+    "company": "75way Technologies",
+    "location": "Gurgaon, Haryana",
+    "email": "ppprateeksharma006@gmail.com",
+    "github": "https://github.com/PersonUK-Git",
+    "linkedin": "https://www.linkedin.com/in/prateek-sharma-1b4882264/",
+    "resume": "./assets/Prateek_resume.pdf",
+    "summary": "Full Stack Developer building cross-platform applications with React, React Native, Flutter, Node.js and TypeScript. I architect SSO systems, write native mobile bridges in Swift and Kotlin, integrate AI services, and ship containerized backends through CI/CD — including a published Play Store app with its own DevOps pipeline."
+  },
+  "stats": [
+    { "value": "8", "label": "Projects built" },
+    { "value": "3", "label": "Client apps unified via SSO" },
+    { "value": "15+", "label": "Shared UI components shipped" },
+    { "value": "1", "label": "App live on Play Store" }
   ],
-  "portfolio": [
-    {
-      "id": "1",
-      "src": "https://play-lh.googleusercontent.com/sewftgpO1eR7rtHdhdMfFEX00ZK1uzCYP2fVnwSuFORbfvJ9xd7naS1vzPbzloXNLEBk2LDPlpKIpEOaJroyMg=w526-h296-rw",
-      "images": [
-        "https://play-lh.googleusercontent.com/sewftgpO1eR7rtHdhdMfFEX00ZK1uzCYP2fVnwSuFORbfvJ9xd7naS1vzPbzloXNLEBk2LDPlpKIpEOaJroyMg=w526-h296-rw",
-        "https://play-lh.googleusercontent.com/E528NUm1Pv3oMKqpX5vSC3z_VEO3r4eZH_-gkmUBpx_91ps1Xl3CrnufxLBJE6dlwqRm8t03eYq-lQlsVTph8A=w526-h296-rw",
-        "https://play-lh.googleusercontent.com/2X2FSfkJklOLhRC1JFR4IZigLHVGekqlakr_kJFOcK6n9uOdBXTEKv3tpjl-0Q3mEI5zzAK_tv5Yzh3x6mjG=w526-h296-rw",
-        "https://play-lh.googleusercontent.com/2X2FSfkJklOLhRC1JFR4IZigLHVGekqlakr_kJFOcK6n9uOdBXTEKv3tpjl-0Q3mEI5zzAK_tv5Yzh3x6mjG=w526-h296-rw"
-      ],
-      "title": "ClimbIRL — Gamified Productivity App",
-      "description": "Independently built and published a full-stack gamified task RPG on Play Store. Features XP, timezone-aware ranking, atomic achievements, rewarded AdMob economy, Gemini 2.5 Flash photo task verification, and automated Docker deployment to Oracle Cloud.",
-      "link": "Play Store",
-      "linkAdd": "https://play.google.com/store/apps/details?id=com.trackittoo.climbirl",
-      "tags": ["Flutter", "Node.js", "Gemini AI", "Docker", "Oracle Cloud", "FCM", "Three.js"]
-    },
-    {
-      "id": "2",
-      "src": "./img/placeholder-image-1.png",
-      "title": "Full Stack E-Commerce Platform",
-      "description": "A comprehensive e-commerce system featuring product catalogue search, cart management, secure user authentication, and Braintree payment gateway integration for end-to-end transactions.",
-      "link": "View Live",
-      "linkAdd": "https://prateek-ecom.netlify.app/",
-      "tags": ["React", "Node.js", "Express", "MongoDB", "Braintree", "Bootstrap"]
-    },
-    {
-      "id": "3",
-      "src": "./img/placeholder-image-2.png",
-      "title": "Realtime Code Editor",
-      "description": "A collaborative realtime editor built to facilitate synced coding workflows. Uses WebSockets and Socket.io to allow multiple developers to co-author code seamlessly with zero lag.",
-      "link": "View Live",
-      "linkAdd": "https://realtime-code-editor-jq4r.onrender.com/",
-      "tags": ["React", "Node.js", "WebSockets", "Socket.io", "Express"]
-    }
+  "skills": [
+    { "group": "Languages", "color": "#a78bfa", "items": ["C/C++", "SQL", "HTML5", "CSS3", "JavaScript", "TypeScript", "Bash", "Dart", "Swift", "Kotlin"] },
+    { "group": "Frontend & Mobile", "color": "#22d3ee", "items": ["React", "React Native", "Expo", "Flutter", "Next.js", "Tailwind CSS", "Three.js", "Framer Motion", "Jetpack Compose"] },
+    { "group": "Backend", "color": "#f472b6", "items": ["Node.js", "Express", "Django", "REST APIs", "JWT", "OAuth2 / SSO", "WebSockets"] },
+    { "group": "Databases", "color": "#34d399", "items": ["MongoDB", "PostgreSQL", "Firestore", "Redis", "Hive", "SQLite"] },
+    { "group": "DevOps & Cloud", "color": "#fbbf24", "items": ["Docker", "GitHub Actions", "Oracle Cloud", "Linux", "Nginx"] },
+    { "group": "Integrations", "color": "#fb7185", "items": ["Stripe", "Braintree", "QuickBooks API", "Gemini AI", "Firebase FCM", "Apple HealthKit", "Health Connect", "AdMob", "Unity"] }
   ],
   "experience": [
     {
@@ -74,21 +31,197 @@
       "role": "Software Developer",
       "company": "75way Technologies",
       "location": "Mohali, Chandigarh, India",
-      "duration": "AUG 2025 - Present",
+      "duration": "Aug 2025 — Present",
       "points": [
-        "Architected a centralized SSO Client Hub integrating 3 client applications, eliminating duplicate authentication systems and reducing user onboarding friction with zero disruption to the active user base.",
-        "Redesigned authentication workflows across multiple web applications to integrate with a centralized identity provider, cutting per-app auth complexity.",
+        "Architected a centralized SSO Client Hub integrating 3 client applications, eliminating duplicate authentication systems and reducing onboarding friction, with zero disruption to the existing user base during live migration.",
+        "Redesigned authentication workflows across multiple web applications to integrate with a centralized identity provider, cutting per-app auth complexity and streamlining onboarding for new product integrations.",
         "Consolidated billing infrastructure for multiple products into a unified platform, streamlining subscription management and payment processing.",
-        "Engineered custom native bridge modules in Swift (iOS) and Kotlin (Android) to integrate proprietary smart-scale SDKs with a React Native (Expo) app, enabling real-time body composition tracking.",
-        "Integrated Apple Health (HealthKit) and Android Health Connect to sync biometric data, enabling comprehensive fitness progress dashboards."
+        "Engineered custom native bridge modules in Swift (iOS) and Kotlin (Android) to integrate proprietary smart-scale SDKs with a React Native (Expo) app, enabling real-time body composition tracking unavailable in any existing JS library.",
+        "Integrated Apple Health (HealthKit) and Android Health Connect to sync biometric data into cross-platform fitness progress dashboards.",
+        "Built and maintained a cross-platform ticketing system (React web + React Native iOS/Android) with a shared library of 15+ reusable UI components used across 2 products."
       ],
-      "tags": ["React Native", "Swift", "Kotlin", "Node.js", "PostgreSQL", "Docker", "GitHub Actions"]
+      "tags": ["React", "React Native (Expo)", "Swift", "Kotlin", "Node.js", "PostgreSQL", "Docker", "GitHub Actions"]
     }
+  ],
+  "categories": ["All", "Mobile", "Web", "Game", "Backend"],
+  "projects": [
+    {
+      "id": "climbirl",
+      "title": "ClimbIRL",
+      "tagline": "Gamified productivity: turn real-life tasks into an RPG",
+      "categories": ["Mobile", "Backend", "Web"],
+      "status": "Live on Play Store",
+      "statusType": "live",
+      "date": "Jun 2026",
+      "color": "#a855f7",
+      "featured": true,
+      "icon": "./img/projects/climbirl-icon.webp",
+      "images": [
+        "./img/projects/climbirl-1.webp",
+        "./img/projects/climbirl-2.webp",
+        "./img/projects/climbirl-3.webp",
+        "./img/projects/climbirl-4.webp"
+      ],
+      "description": "I built and published this full-stack app to Google Play on my own. Users earn XP, level up, keep streaks, unlock achievements and climb global leaderboards by completing real-life tasks.",
+      "highlights": [
+        "Timezone-aware gamification engine with a 20-level ranking system, atomic achievement unlocks and a rewarded AdMob token economy.",
+        "Google Gemini 2.5 Flash verifies task completion from photos; FCM delivers scheduled, timezone-sensitive push notifications.",
+        "Dockerized Node.js/TypeScript backend deployed to Oracle Cloud through a GitHub Actions CI/CD pipeline.",
+        "3D interactive marketing site built with Next.js 16, Three.js (R3F) and Framer Motion."
+      ],
+      "tags": ["Flutter", "Bloc", "Node.js", "TypeScript", "Express", "MongoDB", "Gemini AI", "FCM", "AdMob", "Docker", "Oracle Cloud", "Next.js", "Three.js"],
+      "links": [
+        { "label": "Play Store", "url": "https://play.google.com/store/apps/details?id=com.trackittoo.climbirl" },
+        { "label": "Website", "url": "https://climbirl.trackittoo.com" },
+        { "label": "GitHub", "url": "https://github.com/PersonUK-Git/ClimbIRL-FE" }
+      ]
+    },
+    {
+      "id": "arcadeverse",
+      "title": "ArcadeVerse 3D",
+      "tagline": "Ad-free hyper-casual 3D minigame hub for Android",
+      "categories": ["Game", "Mobile"],
+      "status": "In development",
+      "statusType": "wip",
+      "date": "2026",
+      "color": "#f59e0b",
+      "shape": "ring",
+      "description": "A card-based launcher in Unity 6 that hosts self-contained 3D arcade games. All of them share one lightweight framework for scene launching, scoring, saves, audio and touch input.",
+      "highlights": [
+        "Zero prefabs and zero art assets: every model, material, sprite and UI screen is generated procedurally at runtime from primitives and signed-distance shapes.",
+        "Evolution Runner: math gates (+5, x2, -3, ÷2) grow your power and evolve an aircraft rig from bare fuselage to glowing starship.",
+        "Bridge Race: collect colour-matched blocks to build your lane upward while racing two AI bots.",
+        "Mobile performance budget: 60 FPS, under 100 batches per scene and under a 70 MB APK (URP, IL2CPP, ARM64)."
+      ],
+      "tags": ["Unity 6", "C#", "URP", "Procedural Generation", "Android", "IL2CPP"],
+      "links": []
+    },
+    {
+      "id": "moneytracker",
+      "title": "My Money Tracker",
+      "tagline": "Private, on-device expense tracking from bank SMS",
+      "categories": ["Mobile"],
+      "status": "v1.1 · Android",
+      "statusType": "private",
+      "date": "Mar 2026",
+      "color": "#10b981",
+      "description": "A native Android finance app that turns bank SMS into a categorized spending ledger. It runs entirely on-device, so no transaction data ever leaves the phone.",
+      "highlights": [
+        "SMS parser extracts amount, merchant, account and date from bank messages, and ignores personal and promotional texts.",
+        "On-device AI categorization with Google's Gemma 2B via MediaPipe LLM Inference. The model downloads on demand and stays in secure storage.",
+        "Recurring-payment detection, analytics charts, and a Jetpack Glance home-screen spending widget.",
+        "WorkManager spending digests, an app lock, Play in-app updates and an R8-shrunk release build."
+      ],
+      "tags": ["Kotlin", "Jetpack Compose", "Material 3", "MediaPipe", "Gemma 2B", "Glance", "WorkManager"],
+      "links": []
+    },
+    {
+      "id": "habitvault",
+      "title": "Habit Password Vault",
+      "tagline": "Encrypted password manager + focus habits, on Android & Windows",
+      "categories": ["Mobile"],
+      "status": "Android · Windows",
+      "statusType": "private",
+      "date": "2026",
+      "color": "#6366f1",
+      "shape": "ring",
+      "description": "A cross-platform Flutter vault that stores credentials with field-level encryption. It also helps build better digital habits with a website blocker and offline-time tracking.",
+      "highlights": [
+        "Field-level AES encryption over SQLite, biometric unlock, clipboard auto-clear guard and encrypted backups with import/export.",
+        "Native Android Autofill service, a built-in TOTP authenticator with QR scanning, and a password-health audit.",
+        "Peer-to-peer Wi-Fi sync between devices, plus a Windows desktop build that launches at startup.",
+        "Automated release pipeline with GitHub Actions version bumps."
+      ],
+      "tags": ["Flutter", "Dart", "Bloc", "SQLite", "AES / PointyCastle", "Android Autofill", "Windows"],
+      "links": []
+    },
+    {
+      "id": "secureroom",
+      "title": "Secure Room",
+      "tagline": "Virtual data rooms for sharing sensitive company documents",
+      "categories": ["Mobile", "Backend"],
+      "status": "Full stack",
+      "statusType": "private",
+      "date": "2026",
+      "color": "#ef4444",
+      "description": "A Flutter client and a TypeScript/Express backend for companies to manage secure rooms, invite users and share confidential documents, with every access audited.",
+      "highlights": [
+        "Modular Express 5 + MongoDB API with company, user, room, document, subscription and audit-log domains.",
+        "JWT auth, Cloudinary document uploads via Multer, and Mailjet transactional emails.",
+        "In-app PDF viewing with screenshot and screen-recording protection, plus deep-link invites.",
+        "Feature-first Flutter architecture with Bloc, Dio and Hive."
+      ],
+      "tags": ["Flutter", "Node.js", "TypeScript", "Express 5", "MongoDB", "JWT", "Cloudinary", "Mailjet"],
+      "links": []
+    },
+    {
+      "id": "trackittoo",
+      "title": "TrackItToo",
+      "tagline": "Offline-first habit tracker with analytics",
+      "categories": ["Mobile"],
+      "status": "Flutter app",
+      "statusType": "private",
+      "date": "2025",
+      "color": "#06b6d4",
+      "description": "A feature-rich Flutter habit tracker with daily check-ins, automatic step counting, reminders and visual progress reports.",
+      "highlights": [
+        "Email OTP authentication and a biometric app lock (Face ID / fingerprint).",
+        "Integrated pedometer, and smart reminders through FCM and local notifications.",
+        "Interactive weekly and monthly analytics with fl_chart.",
+        "Offline-first persistence with Hive and Bloc/Cubit state management."
+      ],
+      "tags": ["Flutter", "Dart", "Bloc", "Hive", "Firebase", "fl_chart", "Lottie"],
+      "links": []
+    },
+    {
+      "id": "ecommerce",
+      "title": "Full Stack E-Commerce",
+      "tagline": "MERN storefront with Braintree payments",
+      "categories": ["Web", "Backend"],
+      "status": "Live",
+      "statusType": "live",
+      "date": "Oct 2023",
+      "color": "#3b82f6",
+      "description": "A full-stack e-commerce platform with a product catalogue, cart management, user authentication and secure end-to-end checkout.",
+      "highlights": [
+        "Braintree payment gateway integration for secure transactions.",
+        "RESTful Express/Node.js API backed by MongoDB for fast product queries and order processing.",
+        "Responsive React + Bootstrap storefront."
+      ],
+      "tags": ["React", "Node.js", "Express", "MongoDB", "Braintree", "Bootstrap"],
+      "links": [
+        { "label": "Live demo", "url": "https://prateek-ecom.netlify.app/" }
+      ]
+    },
+    {
+      "id": "codeeditor",
+      "title": "Realtime Code Editor",
+      "tagline": "Collaborative coding rooms over WebSockets",
+      "categories": ["Web"],
+      "status": "Live",
+      "statusType": "live",
+      "date": "2023",
+      "color": "#ec4899",
+      "shape": "ring",
+      "description": "A collaborative editor where several developers join a room and co-author code in real time.",
+      "highlights": [
+        "Socket.io rooms keep every connected editor in sync with minimal latency.",
+        "React frontend served from a Node/Express server."
+      ],
+      "tags": ["React", "Node.js", "Socket.io", "WebSockets", "Express"],
+      "links": [
+        { "label": "Live demo", "url": "https://realtime-code-editor-jq4r.onrender.com/" }
+      ]
+    }
+  ],
+  "education": [
+    { "school": "Amity University Haryana", "degree": "B.Tech, Computer Science & Engineering", "duration": "2021 — 2025" },
+    { "school": "D.S.V.N Sr. Sec. School", "degree": "Class XII, CBSE", "duration": "2020 — 2021" },
+    { "school": "D.S.V.N Sr. Sec. School", "degree": "Class X, CBSE", "duration": "2018 — 2019" }
   ],
   "testimonial": [
     {
       "id": "1",
-      "count": "5",
       "src": "./img/icon_p.png",
       "description": "Your project reflects a deep understanding of both frontend and backend technologies, demonstrating your proficiency in React, Node.js, and Braintree integration. The seamless user experience and real-time collaboration features showcase your commitment to delivering high-quality, innovative solutions.",
       "author_name": "Priyanka",
@@ -96,7 +229,6 @@
     },
     {
       "id": "2",
-      "count": "5",
       "src": "./img/icon_s.png",
       "description": "Your adeptness in React, Node.js, and collaborative tools is evident in the seamless functionality and real-time features of your projects. Your ability to work effectively within a team, fostering communication and synergy, highlights your valuable contribution to achieving project goals.",
       "author_name": "Sujeet",

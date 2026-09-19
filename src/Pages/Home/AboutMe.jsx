@@ -1,103 +1,78 @@
-import { useEffect, useRef } from "react";
 import data from "../../data/index.json";
+import { BriefcaseIcon, CapIcon, MapPinIcon } from "../../components/Icons";
 
 export default function AboutMe() {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const elements = entry.target.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-scale");
-            elements.forEach((el, index) => {
-              setTimeout(() => {
-                el.classList.add("revealed");
-              }, index * 80);
-            });
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const { profile, education } = data;
 
   return (
-    <section id="AboutMe" className="about--section" ref={sectionRef}>
-      <div className="hero--section--content--box about--section--box">
-        <div className="hero--section--content">
-          <p className="section--title reveal">About</p>
-          <h1 className="skills--section--heading reveal" style={{ textAlign: "left" }}>About Me & Experience</h1>
-          <p className="hero--section-description reveal">
-            I am a Software Developer and Computer Science Engineering student passionate about crafting high-performance cross-platform applications, custom native bridges, and centralized backend/SSO ecosystems.
+    <section id="AboutMe" className="section">
+      <div className="section--header reveal">
+        <p className="eyebrow">01 · About</p>
+        <h2 className="section--title">
+          A developer who ships <span className="gradient-text">end to end</span>
+        </h2>
+      </div>
+
+      <div className="about--grid">
+        <div className="about--text glass reveal">
+          <p>{profile.summary}</p>
+          <p>
+            By day I'm at <strong>{profile.company}</strong>, building identity, billing and health-data
+            infrastructure. On my own time I build and publish apps, from an RPG-style productivity app on the
+            Play Store to a procedurally generated Unity arcade and an on-device AI money tracker.
           </p>
-          <p className="hero--section-description reveal">
-            My experience spans building centralized authentication hubs, integrating biometrics with iOS HealthKit & Android Health Connect, and publishing fully automated production apps to the Play Store.
-          </p>
+
+          <ul className="about--facts">
+            <li>
+              <BriefcaseIcon /> Software Developer, {profile.company}
+            </li>
+            <li>
+              <MapPinIcon /> {profile.location}, India
+            </li>
+            <li>
+              <CapIcon /> B.Tech CSE, Amity University Haryana
+            </li>
+          </ul>
         </div>
 
-        {/* Stats */}
-        <div className="about--stats reveal">
-          <div className="about--stat--card">
-            <div className="about--stat--number">1+ Yrs</div>
-            <div className="about--stat--label">Experience</div>
+        <div className="code-card glass reveal" aria-label="Profile summary as code">
+          <div className="code-card--bar">
+            <span />
+            <span />
+            <span />
+            <em>prateek.ts</em>
           </div>
-          <div className="about--stat--card">
-            <div className="about--stat--number">3+</div>
-            <div className="about--stat--label">Live Apps</div>
-          </div>
-          <div className="about--stat--card">
-            <div className="about--stat--number">15+</div>
-            <div className="about--stat--label">Reusable Components</div>
-          </div>
+          <pre>
+            <code>
+              <span className="tk-key">const</span> <span className="tk-var">prateek</span> = {"{"}
+              {"\n  "}role: <span className="tk-str">"Full Stack Developer"</span>,
+              {"\n  "}company: <span className="tk-str">"{profile.company}"</span>,
+              {"\n  "}stack: [<span className="tk-str">"React"</span>, <span className="tk-str">"React Native"</span>,
+              {"\n          "}<span className="tk-str">"Flutter"</span>, <span className="tk-str">"Node.js"</span>,{" "}
+              <span className="tk-str">"TypeScript"</span>],
+              {"\n  "}native: [<span className="tk-str">"Swift"</span>, <span className="tk-str">"Kotlin"</span>],
+              {"\n  "}shipped: <span className="tk-num">8</span>,
+              {"\n  "}playStore: <span className="tk-key">true</span>,
+              {"\n  "}openTo: <span className="tk-str">"cool problems"</span>,
+              {"\n"}
+              {"}"};
+            </code>
+          </pre>
         </div>
       </div>
 
-      {/* Experience Timeline */}
-      <div className="about--timeline--wrapper reveal-right">
-        <h3 style={{ 
-          marginBottom: "24px", 
-          color: "var(--heading-color)",
-          fontSize: "24px",
-          fontWeight: 700 
-        }}>
-          Work Experience
+      <div className="education reveal">
+        <h3 className="subheading">
+          <CapIcon size={20} /> Education
         </h3>
-        <div className="about--timeline">
-          {data?.experience?.map((exp, idx) => (
-            <div key={idx} className="about--timeline--item reveal">
-              <div className="about--timeline--year">{exp.duration}</div>
-              <div className="about--timeline--title">{exp.role} @ {exp.company}</div>
-              <p className="text-sm" style={{ color: "var(--primary)", fontWeight: "600", marginBottom: "8px" }}>
-                {exp.location}
-              </p>
-              <ul style={{ paddingLeft: "16px", color: "var(--text-muted)", fontSize: "14px", lineHeight: "1.6" }}>
-                {exp.points.map((pt, pIdx) => (
-                  <li key={pIdx} style={{ marginBottom: "6px" }}>{pt}</li>
-                ))}
-              </ul>
-              <div className="portfolio--tech-tags" style={{ marginTop: "12px" }}>
-                {exp.tags.map((tag, tIdx) => (
-                  <span key={tIdx} className="portfolio--tech-tag" style={{ background: "rgba(94, 59, 238, 0.05)" }}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
+        <div className="education--list">
+          {education.map((e) => (
+            <div key={e.degree} className="education--item glass">
+              <span className="education--year">{e.duration}</span>
+              <strong>{e.school}</strong>
+              <span className="muted">{e.degree}</span>
             </div>
           ))}
-
-          {/* Education Milestone */}
-          <div className="about--timeline--item reveal">
-            <div className="about--timeline--year">2021 - 2025</div>
-            <div className="about--timeline--title">B.Tech in Computer Science Engineering</div>
-            <p className="text-sm" style={{ color: "var(--text-muted)" }}>Amity University Haryana</p>
-          </div>
         </div>
       </div>
     </section>

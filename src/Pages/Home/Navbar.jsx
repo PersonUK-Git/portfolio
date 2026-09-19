@@ -1,138 +1,83 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-scroll";
 
+const LINKS = [
+  { to: "heroSection", label: "Home" },
+  { to: "AboutMe", label: "About" },
+  { to: "experience", label: "Experience" },
+  { to: "mySkills", label: "Skills" },
+  { to: "MyPortfolio", label: "Projects" },
+  { to: "testimonial", label: "Feedback" },
+];
+
 function Navbar() {
-  const [navActive, setNavActive] = useState(false);
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
-  const toggleNav = () => {
-    setNavActive(!navActive);
-  };
-
-  const closeMenu = () => {
-    setNavActive(false);
-  };
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
       setScrolled(window.scrollY > 20);
+      setProgress(max > 0 ? window.scrollY / max : 0);
     };
-
-    const handleResize = () => {
-      if (window.innerWidth <= 1200) {
-        closeMenu();
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleResize);
-
+    const onResize = () => window.innerWidth > 960 && setOpen(false);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onResize);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
     };
   }, []);
 
+  const close = () => setOpen(false);
+
   return (
-    <nav className={`navbar ${navActive ? "active" : ""} ${scrolled ? "scrolled" : ""}`}>
-      <div>
-        <p className="navbar--brand">
-          Prateek<span>.dev</span>
-        </p>
-      </div>
-      <a
-        className={`nav__hamburger ${navActive ? "active" : ""}`}
-        onClick={toggleNav}
+    <nav className={`navbar ${scrolled ? "scrolled" : ""} ${open ? "open" : ""}`}>
+      <div className="navbar--progress" style={{ transform: `scaleX(${progress})` }} />
+      <Link to="heroSection" smooth duration={600} className="navbar--brand" onClick={close}>
+        <span className="navbar--logo">P</span>
+        Prateek<span className="accent">.dev</span>
+      </Link>
+
+      <button
+        className={`nav__hamburger ${open ? "active" : ""}`}
+        onClick={() => setOpen(!open)}
+        aria-label="Toggle menu"
+        aria-expanded={open}
       >
-        <span className="nav__hamburger__line"></span>
-        <span className="nav__hamburger__line"></span>
-        <span className="nav__hamburger__line"></span>
-      </a>
-      <div className={`navbar--items ${navActive ? "active" : ""}`}>
-        <ul>
-          <li>
+        <span />
+        <span />
+        <span />
+      </button>
+
+      <ul className="navbar--items">
+        {LINKS.map((l) => (
+          <li key={l.to}>
             <Link
-              onClick={closeMenu}
-              activeClass="navbar--active-content"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-              to="heroSection"
-              className="navbar--content"
+              to={l.to}
+              spy
+              smooth
+              offset={-80}
+              duration={600}
+              activeClass="active"
+              className="navbar--link"
+              onClick={close}
             >
-              Home
+              {l.label}
             </Link>
           </li>
-          <li>
-            <Link
-              onClick={closeMenu}
-              activeClass="navbar--active-content"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-              to="mySkills"
-              className="navbar--content"
-            >
-              Skills
-            </Link>
-          </li>
-          <li>
-            <Link
-              onClick={closeMenu}
-              activeClass="navbar--active-content"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-              to="MyPortfolio"
-              className="navbar--content"
-            >
-              Portfolio
-            </Link>
-          </li>
-          <li>
-            <Link
-              onClick={closeMenu}
-              activeClass="navbar--active-content"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-              to="AboutMe"
-              className="navbar--content"
-            >
-              About
-            </Link>
-          </li>
-          <li>
-            <Link
-              onClick={closeMenu}
-              activeClass="navbar--active-content"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-              to="testimonial"
-              className="navbar--content"
-            >
-              Testimonials
-            </Link>
-          </li>
-        </ul>
-      </div>
-      <Link
-        onClick={closeMenu}
-        activeClass="navbar--active-content"
-        spy={true}
-        smooth={true}
-        offset={-70}
-        duration={500}
-        to="Contact"
-        className="btn btn-outline-primary"
-      >
-        Contact Me
+        ))}
+        <li className="navbar--cta-mobile">
+          <Link to="Contact" smooth offset={-80} duration={600} className="btn btn-primary" onClick={close}>
+            Let's talk
+          </Link>
+        </li>
+      </ul>
+
+      <Link to="Contact" smooth offset={-80} duration={600} className="btn btn-primary navbar--cta">
+        Let's talk
       </Link>
     </nav>
   );
